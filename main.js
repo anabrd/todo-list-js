@@ -6,6 +6,7 @@
 // manipulate string to push input into object (using .split method)
 // 2. find a uniform way to display/input date
 // 3. How to display an array in an alert or in a prompt
+// 4. 
 
 
 /// GLOBAL VARIABLES
@@ -68,28 +69,50 @@ function addItem() {
 
     let newItem = {};
 
-    newItem.date = prompt("Enter date (dd/mm/yyyy): ").toLowerCase();
-    newItem.activity = prompt("Enter task: ").toLowerCase();
-    newItem.status = prompt("Enter the status of the task (done/to do)").toLowerCase();     
+    // Version with one prompt
+    let answer = prompt("Type what you need to do in the following format, separated by commas", 'dd/mm/yyyy,acitivity,done/to do');
+
+    // 112332, eat, to do
+
+    // Dividing the string after a specific character using the .split method
+    newItem.date = answer.split(",")[0];
+    newItem.activity = answer.split(",")[1];
+    newItem.status = answer.split(",")[2];
+
+    // newItem.date = prompt("Enter date (dd/mm/yyyy): ").toLowerCase();
+    // newItem.activity = prompt("Enter task: ").toLowerCase();
+    // newItem.status = prompt("Enter the status of the task (done/to do)").toLowerCase();     
+
+
+    // converting strings into booleans
+    if (newItem.status == "done") {
+        newItem.status = true;
+    } else if (newItem.status == "to do") {
+        newItem.status = false;
+    } else {
+        alert(`Please type "done" or "to do"`);
+        addItem();
+    }
 
     toDoList.push(newItem);
 }
 
 // 2. FUNCTION FOR PRINTING LIST
 function printList() {
+
     console.log(toDoList);
 }
 
 // 3. FUNCTION TO SHOW LIST FOR A DATE
 function checkDate() {
     dateQ = prompt("Which date would like to check?");
-
-    alert("test");
     for (const iterator of toDoList) {
         
-        if (iterator.date == dateQ) {
+        if (iterator.date == dateQ && iterator.status == false) {
             //toDoList --> check date --> print all activities that correspond to that date
-            console.log(iterator.activity, iterator.status);
+            alert(`You still have to ${iterator.activity} on ${iterator.date}!`);
+        } else {
+            alert(`Congrats, you already did ${iterator.activity} on ${iterator.date}!`);
         }
     }
 } 
