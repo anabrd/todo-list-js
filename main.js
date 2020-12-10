@@ -1,12 +1,12 @@
 ///// TO DO LIST //////
 
-
 //////// OPTIONAL
 ///1. ADD NEW ITEM (optional to do: user inputs date, activity, status all in one prompt, separated by commas 
 // manipulate string to push input into object (using .split method)
 // 2. find a uniform way to display/input date
 // 3. How to display an array in an alert or in a prompt
-// 4. 
+// 4. Beautify output in console.log
+// 5. Alert infomration for days with no to do item
 
 
 /// GLOBAL VARIABLES
@@ -20,6 +20,7 @@ let startQ;
 let dateQ;
 let indexQ;
 let deleteQ;
+let answer;
 
 /// MAIN FUNCTION FOR STARTING THE PROGRAM
 function start() {
@@ -70,18 +71,18 @@ function addItem() {
     let newItem = {};
 
     // Version with one prompt
-    let answer = prompt("Type what you need to do in the following format, separated by commas", 'dd/mm/yyyy,acitivity,done/to do');
-
+   /*  answer = prompt("Type what you need to do in the following format, separated by commas", 'dd/mm/yyyy,acitivity,done/to do');
+ */
     // 112332, eat, to do
 
     // Dividing the string after a specific character using the .split method
-    newItem.date = answer.split(",")[0];
-    newItem.activity = answer.split(",")[1];
-    newItem.status = answer.split(",")[2];
+    // newItem.date = answer.split(",")[0];
+    // newItem.activity = answer.split(",")[1];
+    // newItem.status = answer.split(",")[2];
 
-    // newItem.date = prompt("Enter date (dd/mm/yyyy): ").toLowerCase();
-    // newItem.activity = prompt("Enter task: ").toLowerCase();
-    // newItem.status = prompt("Enter the status of the task (done/to do)").toLowerCase();     
+    newItem.date = prompt("Enter date (dd/mm/yyyy): ").toLowerCase();
+    newItem.activity = prompt("Enter task: ").toLowerCase();
+    newItem.status = prompt("Enter the status of the task (done/to do)").toLowerCase();     
 
 
     // converting strings into booleans
@@ -107,20 +108,19 @@ function printList() {
 function checkDate() {
     dateQ = prompt("Which date would like to check?");
     for (const iterator of toDoList) {
-        
         if (iterator.date == dateQ && iterator.status == false) {
             //toDoList --> check date --> print all activities that correspond to that date
             alert(`You still have to ${iterator.activity} on ${iterator.date}!`);
-        } else {
+        } else if (iterator.date == dateQ  && iterator.status == true) {
             alert(`Congrats, you already did ${iterator.activity} on ${iterator.date}!`);
         }
     }
+    console.log(toDoList);
 } 
 
 // 4. FUNCTION TO CHANGE STATUS
 function changeStatus() {
     indexQ = parseInt(prompt("Please choose index number of activity whose status you'd like to change: "));
-
     toDoList[indexQ].status = prompt("Insert new status :");
 } 
 
@@ -136,3 +136,5 @@ function deleteItem() {
 
 ////////////***** this is where the program stars *********/////////
 start();
+
+console.log(toDoList);
