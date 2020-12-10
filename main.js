@@ -6,7 +6,7 @@
 // 2. find a uniform way to display/input date
 // 3. How to display an array in an alert or in a prompt
 // 4. Beautify output in console.log
-// 5. Alert infomration for days with no to do item
+// 5. Alert information for days with no to do item in step 4
 
 
 /// GLOBAL VARIABLES
@@ -80,6 +80,7 @@ function addItem() {
     // newItem.activity = answer.split(",")[1];
     // newItem.status = answer.split(",")[2];
 
+    // Version with three prompts
     newItem.date = prompt("Enter date (dd/mm/yyyy): ").toLowerCase();
     newItem.activity = prompt("Enter task: ").toLowerCase();
     newItem.status = prompt("Enter the status of the task (done/to do)").toLowerCase();     
@@ -100,7 +101,6 @@ function addItem() {
 
 // 2. FUNCTION FOR PRINTING LIST
 function printList() {
-
     console.log(toDoList);
 }
 
