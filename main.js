@@ -113,6 +113,9 @@ function checkDate() {
             alert(`You still have to ${iterator.activity} on ${iterator.date}!`);
         } else if (iterator.date == dateQ  && iterator.status == true) {
             alert(`Congrats, you already did ${iterator.activity} on ${iterator.date}!`);
+        } else {
+            alert(`You have nothing planned on ${dateQ}!`);
+            break;
         }
     }
     console.log(toDoList);
