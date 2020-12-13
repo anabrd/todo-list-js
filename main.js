@@ -1,15 +1,14 @@
 ///// TO DO LIST //////
 
 //////// OPTIONAL
-///1. ADD NEW ITEM (optional to do: user inputs date, activity, status all in one prompt, separated by commas 
-// manipulate string to push input into object (using .split method)
-// 2. find a uniform way to display/input date
-// 3. How to display an array in an alert or in a prompt
+// 1. Find a uniform way to display/input date
+// 2. How to display an array in an alert or in a prompt
 // 4. Beautify output in console.log
-// 5. Alert information for days with no to do item in step 4
 
 
 /// GLOBAL VARIABLES
+
+// Sample item in to do list
 let toDoList = [ 
     {date: "11/12/2020",
     activity: "study",
@@ -24,7 +23,7 @@ let answer;
 
 /// MAIN FUNCTION FOR STARTING THE PROGRAM
 function start() {
-startQ = parseInt(prompt(`What would you like to?
+startQ = parseInt(prompt(`What would you like to do?
 [1] Add new item
 [2] Show all list
 [3] Show list for a certain date
@@ -86,7 +85,7 @@ function addItem() {
     newItem.status = prompt("Enter the status of the task (done/to do)").toLowerCase();     
 
 
-    // converting strings into booleans
+    // Converting strings into booleans
     if (newItem.status == "done") {
         newItem.status = true;
     } else if (newItem.status == "to do") {
@@ -124,7 +123,7 @@ function checkDate() {
 // 4. FUNCTION TO CHANGE STATUS
 function changeStatus() {
     indexQ = parseInt(prompt("Please choose index number of activity whose status you'd like to change: "));
-    toDoList[indexQ].status = prompt("Insert new status :");
+    toDoList[indexQ].status = prompt("Insert new status: ");
 } 
 
 
@@ -133,11 +132,11 @@ function deleteItem() {
 
     deleteQ = parseInt(prompt("Please choose index number of activity which you'd like to delete: "));
 
-    // method array.spluce(index number, amount of items to delete at that index)
+    // method array.splice(index number, amount of items to delete at that index)
     toDoList.splice(deleteQ, 1);
 }
 
-////////////***** this is where the program stars *********/////////
+////////////***** This is where the program stars *********/////////
 start();
 
 console.log(toDoList);
